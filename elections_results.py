@@ -48,6 +48,14 @@ remainders_couples_2019b = frozenset(
     ]
 )
 
+remainders_couples_2020 = frozenset(
+    [
+        frozenset(["אמת", "פה"]),
+        frozenset(["מחל", "טב"]),
+        frozenset(["שס", "ג"]),
+    ]
+)
+
 def retrieve_elections_result(elections_website, remainders_couples, threshold_percent=VOTES_THRESHOLD_PERCENTAGE):
     votes = get_election_results_from_website(elections_website)
     if not votes:
@@ -75,6 +83,8 @@ def main():
         results = retrieve_elections_result(f"https://votes21.bechirot.gov.il/{city_get_param}", remainders_couples_2019a)
     elif elections_year == "2019b":
         results = retrieve_elections_result(f"https://votes22.bechirot.gov.il/{city_get_param}", remainders_couples_2019b)
+    elif elections_year == "2020":
+        results = retrieve_elections_result(f"https://votes23.bechirot.gov.il/{city_get_param}", remainders_couples_2020)
     else:
         print("Unknown elections")
         return
