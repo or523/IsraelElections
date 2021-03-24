@@ -17,7 +17,9 @@ def get_election_results_from_website(website_url):
     results = {}
     for row in results_table_rows:
         cells = row.find_all("td")
-        party_code = str(cells[0].contents[0])
+        if not cells:
+            continue
+        party_code = str(cells[0].contents[0]).strip()
         party_votes = int(cells[-1].find("div", {"class": "FloatDir"}).contents[0].strip().replace(",", ""))
         if party_code:
             results[party_code] = party_votes
