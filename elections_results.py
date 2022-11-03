@@ -64,6 +64,17 @@ remainders_couples_2021 = frozenset(
         frozenset(["ט", "מחל"]),
         frozenset(["אמת", "מרצ"]),
         frozenset(["שס", "ג"]),
+        frozenset(["ודעם", "עם"]),
+    ]
+)
+
+remainders_couples_2022 = frozenset(
+    [
+        frozenset(["כן", "פה"]),
+        frozenset(["אמת", "מרצ"]),
+        frozenset(["שס", "ג"]),
+        frozenset(["ט", "מחל"]),
+        frozenset(["נק", "ף"]),
     ]
 )
 
@@ -98,6 +109,8 @@ def main():
         results = retrieve_elections_result(f"https://votes23.bechirot.gov.il/{city_get_param}", remainders_couples_2020)
     elif elections_year == "2021":
         results = retrieve_elections_result(f"https://votes24.bechirot.gov.il/{city_get_param}", remainders_couples_2021)
+    elif elections_year == "2022":
+        results = retrieve_elections_result(f"https://votes25.bechirot.gov.il/{city_get_param}", remainders_couples_2022)
     else:
         print("Unknown elections")
         return
