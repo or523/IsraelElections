@@ -2,7 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_election_results_from_website(website_url):
-    req = requests.get(website_url)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+    }
+    req = requests.get(website_url, headers=headers)
     if (req.status_code != 200):
         raise ValueError("Could not fetch website")
     website_content = req.text
